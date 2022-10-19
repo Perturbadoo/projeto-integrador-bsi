@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en-us"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:H="http://java.sun.com/jsf/html">
+<f:metadata>
+    <f:viewAction action="#{visitaBean.listar()}" />
+</f:metadata>
+<h:head>
+    <title>Visita</title>
+</h:head>
+
+<h:body>
+    <ui:include src="menu.xhtml"/>
+    <h:form>
+        <p:messages id="mensagem" closable="true" />
+        <p:toolbar>
+            <p:toolbarGroup align="right">
+                <p:button value="Novo" outcome="visita-cadastro.xhtml?faces-redirect=true">
+
+                </p:button>
+            </p:toolbarGroup>
+        </p:toolbar>
+        <p:dataTable value="#{visitaBean.visitas}" var="cursor" paginator="true" rows="10">
+            <f:facet name="header">
+                <h:outputText value="Visitas"/>
+            </f:facet>
+
+            <p:column headerText="Codigo" sortBy="#{cursor.codigo}" filterBy="#{cursor.codigo}" filterMatchMode="contains">
+                <h:outputText value="#{cursor.codigo}"/>
+            </p:column>
+
+            <p:column headerText="Nome" sortBy="#{cursor.status}" filterBy="#{cursor.status}" filterMatchMode="contains">
+                <h:outputText value="#{cursor.status}"/>
+            </p:column>
+
+            <p:column headerText="Opções">
+            <p:commandButton value="Excluir" actionListener="#{visitaBean.selecionarExclusao(cursor)}"/>
+            <p:commandButton value="Editar" actionListener="#{visitaBean.selecionarEdicao(cursor)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+
+</html>

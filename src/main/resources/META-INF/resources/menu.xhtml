@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en-us"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:H="http://java.sun.com/jsf/html">
+<h:head>
+    <title>Projeto Integrador</title>
+</h:head>
+
+<h:body>
+    <!--<p:submenu label="Categoria 2">
+                    <p:menuitem value="Listagem" outcome="categoria-listagem.xhtml?faces-redirect=true"/>
+                    <p:menuitem value="Novo" outcome="categoria-novo.xhtml?faces-redirect=true"/>
+                </p:submenu>-->
+
+    <h:form>
+        <p:menubar>
+
+            <p:submenu label="Consultar">
+                <p:menuitem value="Agendamento" outcome="agendamento-listar.xhtml?faces-redirect=true"/>
+                <p:menuitem value="Cliente" outcome="cliente-listar.xhtml?faces-redirect=true"/>
+                <p:menuitem value="Colaborador" outcome="colaborador-listar.xhtml?faces-redirect=true"/>
+                <p:menuitem value="Produto" outcome="produto-listar.xhtml?faces-redirect=true"/>
+                <p:menuitem value="Vendedor" outcome="vendedor-listar.xhtml?faces-redirect=true"/>
+                <p:menuitem value="Visita" outcome="visita-listar.xhtml?faces-redirect=true"/>
+            </p:submenu>
+        </p:menubar>
+    </h:form>
+
+</h:body>
+</html>

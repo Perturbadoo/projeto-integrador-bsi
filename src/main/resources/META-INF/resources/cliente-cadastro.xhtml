@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en-us"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:H="http://java.sun.com/jsf/html">
+<f:metadata>
+    <f:viewAction action="#{clienteBean.novo()}"/>
+</f:metadata>
+<h:head>
+    <title>Cliente</title>
+</h:head>
+
+<h:body>
+    <ui:include src="menu.xhtml"/>
+    <h:form>
+        <p:panel header="Inclusão de cadastro de clientes">
+            <p:messages id="mensagem" closable="true" />
+            <p:panelGrid columns="1">
+                <p:outputLabel value="Nome:"/>
+                <p:inputText maxlength="50" size="40" value="#{clienteBean.cliente.nome}" required="true" requiredMessage="O campo Nome é obrigatorio!!"/>
+            </p:panelGrid>
+
+            <p:panelGrid columns="1">
+                <p:outputLabel value="Endereço:"/>
+                <p:inputText maxlength="50" size="40" value="#{clienteBean.cliente.endereco}" required="true" requiredMessage="O campo Endereço é obrigatorio!!"/>
+            </p:panelGrid>
+            <p:panelGrid columns="1">
+                <p:outputLabel value="Telefone"/>
+                <p:inputText maxlength="50" size="40" value="#{clienteBean.cliente.telefone}" required="true" requiredMessage="O campo Telefone é obrigatorio!!"/>
+            </p:panelGrid>
+            <p:panelGrid columns="2">
+                <p:commandButton value="Salvar" actionListener="#{clienteBean.salvar()}" update="mensagem"/>
+                <p:button value="Voltar" outcome="cliente-listar.xhtml?faces-redirect=true"/>
+            </p:panelGrid>
+        </p:panel>
+    </h:form>
+</h:body>
+
+</html>

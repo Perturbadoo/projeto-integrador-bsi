@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en-us"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:metadata>
+    <f:viewAction action="#{visitaBean.carregar()}" />
+</f:metadata>
+
+<h:head>
+    <title>Visita</title>
+</h:head>
+
+<h:body>
+    <ui:include src="menu.xhtml" />
+
+    <h:form>
+        <p:panel header="Visita - Edição">
+            <p:messages id="mensagem" closable="true" />
+
+            <h:panelGrid columns="1">
+                <p:outputLabel value="Status da Visita" />
+                <p:inputText maxlength="50" size="30" value="#{visitaBean.visita.status}" required="true" requiredMessage="O campo Status é obrigatorio" />
+            </h:panelGrid>
+
+            <h:panelGrid columns="2">
+                <p:commandButton value="Editar" actionListener="#{visitaBean.salvarEdicao()}" update="mensagem" />
+                <p:button value="Voltar" outcome="visita-listar.xhtml?faces-redirect=true" />
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+</h:body>
+
+</html>

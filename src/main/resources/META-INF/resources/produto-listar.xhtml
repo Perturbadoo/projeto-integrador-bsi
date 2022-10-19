@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en-us"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:H="http://java.sun.com/jsf/html">
+<f:metadata>
+    <f:viewAction action="#{produtoBean.listar()}" />
+</f:metadata>
+<h:head>
+    <title>Produto</title>
+</h:head>
+
+<h:body>
+    <ui:include src="menu.xhtml"/>
+    <h:form>
+        <p:messages id="mensagem" closable="true" />
+        <p:toolbar>
+            <p:toolbarGroup align="right">
+                <p:button value="Novo" outcome="produto-cadastro.xhtml?faces-redirect=true">
+
+                </p:button>
+            </p:toolbarGroup>
+        </p:toolbar>
+        <p:dataTable value="#{produtoBean.produtos}" var="cursor" paginator="true" rows="10">
+            <f:facet name="header">
+                <h:outputText value="Cliente"/>
+            </f:facet>
+            <p:column headerText="Código" sortBy="#{cursor.codigo}" filterBy="#{cursor.codigo}" filterMatchMode="contains">
+                <h:outputText value="#{cursor.codigo}"/>
+            </p:column>
+            <p:column headerText="Valor" sortBy="#{cursor.valor_unidade}" filterBy="#{cursor.valor_unidade}" filterMatchMode="contains">
+                <h:outputText value="#{cursor.valor_unidade}"/>
+            </p:column>
+            <p:column headerText="Quantidade" sortBy="#{cursor.quantidade_atual}" filterBy="#{cursor.quantidade_atual}" filterMatchMode="contains">
+                <h:outputText value="#{cursor.quantidade_atual}"/>
+            </p:column>
+            <p:column headerText="Descrição" sortBy="#{cursor.descricao}" filterBy="#{cursor.descricao}" filterMatchMode="contains">
+                <h:outputText value="#{cursor.descricao}"/>
+            </p:column>
+
+            <p:column headerText="Opções">
+            <p:commandButton value="Excluir" actionListener="#{produtoBean.selecionarExclusao(cursor)}"/>
+            <p:commandButton value="Editar" actionListener="#{produtoBean.selecionarEdicao(cursor)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+
+</html>
